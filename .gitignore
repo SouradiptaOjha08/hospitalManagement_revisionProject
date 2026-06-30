@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Maven wrapper (boilerplate - not needed in repo)
+.gitattributes
+mvnw
+mvnw.cmd
+.mvn/
