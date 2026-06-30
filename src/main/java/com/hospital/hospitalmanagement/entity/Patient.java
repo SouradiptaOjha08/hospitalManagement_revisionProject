@@ -5,14 +5,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Data
 @ToString
 @Entity
-@Table(name = "patients")
+@Table(name = "patients", indexes = {
+        @Index(name = "idx_patient_id", columnList = "id"),
+        @Index(name = "idx_patient_birth_date", columnList = "birth_date")
+})
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +27,9 @@ public class Patient {
 
     @Column(name = "patient_name", nullable = false, length = 20)
     private String patientName;
+
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
     @Column(name = "age", nullable = false)
     private int age;
